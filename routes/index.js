@@ -7,9 +7,8 @@ const router = express.Router()
 router.get('/', (req, res) => {
   const database = db.get(process.env.DB_COLLECTION)
   database.collection('quotes').find().toArray((err, docs) => {
-    console.log(docs)
+    res.render('index', { quotes: docs, title: 'Express' })
   })
-  res.render('index', { title: 'Express' })
 })
 
 

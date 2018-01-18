@@ -3,3 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  ul
+    each q in quotes
+      li
+        span #{q.name} - #{q.quote}
