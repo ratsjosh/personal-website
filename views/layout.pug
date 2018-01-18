@@ -1,7 +1,7 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+html.has-navbar-fixed-top
+  include includes/head.pug
   body
+    include includes/navbar.pug
     block content
+    include includes/foot.pug

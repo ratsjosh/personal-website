@@ -1,0 +1,37 @@
+nav.navbar.is-transparent.is-fixed-top
+  .navbar-brand
+    a.navbar-item(href='/')
+      img(src='/images/logo.png', alt='Yap Wei Jie Joshua\'s personal website', width='112', height='28')
+    .navbar-burger.burger(data-target='navbar')
+      span
+      span
+      span
+  #navbar.navbar-menu
+    .navbar-start
+      a.navbar-item(href='/')
+        | Home
+      .navbar-item.has-dropdown.is-hoverable
+        a.navbar-link(href='/')
+          | Docs
+        .navbar-dropdown.is-boxed
+          a.navbar-item(href='/')
+            | Overview
+          a.navbar-item(href='/')
+            | Modifiers
+    .navbar-end
+      .navbar-item
+        .field.is-grouped
+          p.control
+            a.bd-tw-button.button.is-primary(data-social-network='Instgram', data-social-action='instagram', data-social-target='https://www.instagram.com/ywjj_/', target='_blank', href='https://www.instagram.com/ywjj_/')
+              span.icon
+                i.fa.fa-instagram
+              span
+                | Instagram
+          p.control
+            a.bd-tw-button.button.is-info(data-social-network='Twitter', data-social-action='twitter', data-social-target='https://twitter.com/ywjj_', target='_blank', href='https://twitter.com/ywjj_')
+              span.icon
+                i.fa.fa-twitter
+              span
+                | Twitter
+script(src='/javascripts/navbar.js')
+
