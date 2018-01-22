@@ -1,0 +1,20 @@
+.parallax {
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax,
+.parallax+div {
+  /* Full height */
+  height: 100vh;
+}
+
+.parallax .container {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

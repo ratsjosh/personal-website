@@ -1,0 +1,17 @@
+include ./sections/sub.pug
+.parallax(style='background-image: url(' + image1 + ');')
+  .container
+    .notification
+      | This container is 
+      strong centered
+      |  on desktop.
+div
+  | Scroll Up and Down this page to see the parallax scrolling effect.
+  | This div is just here to enable scrolling.
+  | Tip: Try to remove the background-attachment property to remove the scrolling effect.
+.parallax(style='background-image: url(' + image2 + ');')
+include ./sections/hobby.pug
+include ./sections/award.pug
+block append style
+link(rel="stylesheet", href="/stylesheets/parallax.css")
+  
