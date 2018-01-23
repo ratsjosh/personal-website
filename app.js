@@ -31,7 +31,7 @@ app.use('/', index)
 app.use('/users', users)
 
 // // APIs
-app.use(cors())
+// app.use(cors())
 app.use('/api/sections', sectionsApi)
 
 // catch 404 and forward to error handler
