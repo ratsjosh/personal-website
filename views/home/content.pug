@@ -1,20 +1,36 @@
+//- main section
+section.hero.is-info.is-fullheight
+  .hero-body
+    .container
+      h1.title
+        | I am #{title}
+      h2.subtitle
+        | Technology enthusiast
+      a(href='#achievement') Click Me to Smooth Scroll to my achievements Below
+//- sub section
 include ./sections/sub.pug
-.parallax(style='background-image: url(' + image1 + ');')
-  .container
-    .notification
-      | This container is 
-      strong centered
-      |  on desktop.
-div
-  | Scroll Up and Down this page to see the parallax scrolling effect.
-  | This div is just here to enable scrolling.
-  | Tip: Try to remove the background-attachment property to remove the scrolling effect.
-.parallax(style='background-image: url(' + image2 + ');')
+if parallaxImage1 && image2
+  .parallax(style='background-image: url(' + parallaxImage1 + ');')
+    .container
+      .notification
+        | This container is 
+        strong centered
+        |  on desktop.
+  div
+    | Scroll Up and Down this page to see the parallax scrolling effect.
+    | This div is just here to enable scrolling.
+    | Tip: Try to remove the background-attachment property to remove the scrolling effect.
+  .parallax(style='background-image: url(' + parallaxImage2 + ');')
+//- includes
 include ./sections/hobby.pug
 include ./sections/achievement.pug
 include ./mixins/section.pug
+
+//- section mixin
 each sec in sections
   +section(sec.name, sec.title, sec.subtitle)
+
+//- import styles
 block append style
-link(rel="stylesheet", href="/stylesheets/parallax.css")
+  link(rel="stylesheet", href="/stylesheets/parallax.css")
   
