@@ -14,6 +14,7 @@ const oauth2 = require('./lib/oauth2')
 
 
 const sectionsApi = require('./routes/api/sections')
+const usersApi = require('./routes/api/users')
 
 const app = express()
 
@@ -31,7 +32,7 @@ app.use(session({ secret: config.sessionSecret }))
 app.use(express.static(path.join(__dirname, 'public')))
 
 // caching disabled for every route
-// app.use(oauth2.disableCache)
+app.use(oauth2.disableCache)
 
 app.use(oauth2.router)
 
@@ -42,18 +43,13 @@ app.use('/users', users)
 // // APIs
 app.use(cors())
 app.use('/api/sections', sectionsApi)
+app.use('/api/users', usersApi)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found')
   err.status = 404
   next(err)
-})
-
-app.use('/dashboard', (err, req, res) => {
-  console.log(err)
-  // User should be authenticated! Redirect him to log in.
-  res.redirect('/users')
 })
 
 // error handler

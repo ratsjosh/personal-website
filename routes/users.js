@@ -8,9 +8,6 @@ const scopes = {
 }
 /* GET /users */
 router.get('/', (req, res) => {
-  if (req.session.user) {
-    res.redirect('/users/dashboard')
-  }
   const login = oAuth2.getUrl(scopes.GOOGLE_PLUS)
   res.render('users/content', {
     login,
@@ -19,6 +16,7 @@ router.get('/', (req, res) => {
 
 router.get('/dashboard', oAuth2.authRequired, (req, res) => {
   const { user } = req.session
+  console.log(req.session)
   res.render('users/content', {
     user,
   })
