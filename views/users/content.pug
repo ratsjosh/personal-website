@@ -1,0 +1,8 @@
+extends ../layout
+block content
+  if login
+    include ./sections/login.pug
+  else
+    include ./sections/dashboard.pug
+
+block append scripts

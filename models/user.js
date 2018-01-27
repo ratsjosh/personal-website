@@ -4,16 +4,15 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 // create a schema
-const sectionSchema = new Schema({
+const userSchema = new Schema({
   name: { type: String, required: true, unique: true },
-  title: { type: String, required: true },
-  subtitle: { type: String, required: true },
-  _creator: { type: Number, ref: 'User' },
+  leadParagraph: String,
+  sections: [{ type: Schema.Types.ObjectId, ref: 'Section' }],
 })
 
 // the schema is useless so far
 // we need to create a model using it
-const Section = mongoose.model('Section', sectionSchema)
+const User = mongoose.model('User', userSchema)
 
 // make this available in our Node applications
-module.exports = Section
+module.exports = User

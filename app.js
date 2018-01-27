@@ -2,12 +2,15 @@ const express = require('express')
 const path = require('path')
 // const favicon = require('serve-favicon')
 const logger = require('morgan')
+const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const index = require('./routes/index')
 const users = require('./routes/users')
+const config = require('./config')
+const oauth2 = require('./lib/oauth2')
 
 
 const sectionsApi = require('./routes/api/sections')
@@ -24,7 +27,13 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(session({ secret: config.sessionSecret }))
 app.use(express.static(path.join(__dirname, 'public')))
+
+// caching disabled for every route
+// app.use(oauth2.disableCache)
+
+app.use(oauth2.router)
 
 // Routes
 app.use('/', index)
@@ -39,6 +48,12 @@ app.use((req, res, next) => {
   const err = new Error('Not Found')
   err.status = 404
   next(err)
+})
+
+app.use('/dashboard', (err, req, res) => {
+  console.log(err)
+  // User should be authenticated! Redirect him to log in.
+  res.redirect('/users')
 })
 
 // error handler

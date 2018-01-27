@@ -9,6 +9,7 @@ const debug = require('debug')('personal-website:server')
 const http = require('http')
 const mongoose = require('mongoose')
 const cfg = require('../config')
+const auth = require('../lib/oauth2')
 // const db = require('../db')
 
 /**
@@ -105,5 +106,6 @@ if (!cfg.mongoUrl) {
   throw new Error('MONGO_URL env variable not set')
 }
 
+auth.init()
 mongoose.connect(cfg.mongoUrl)
 mongoose.Promise = Promise
